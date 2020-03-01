@@ -7,16 +7,14 @@ public class BackstageInventory extends Inventory {
 
     @Override
     public void updateStatus() {
-        if (quality < 50) {
-            quality = quality + 1;
+        increaseQuality();
+
+        if (sellIn < 11) {
+            increaseQuality();
         }
 
-        if (sellIn < 11 && quality < 50) {
-            quality = quality + 1;
-        }
-
-        if (sellIn < 6 && quality < 50) {
-            quality = quality + 1;
+        if (sellIn < 6) {
+            increaseQuality();
         }
 
         sellIn = sellIn - 1;

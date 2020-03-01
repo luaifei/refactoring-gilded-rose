@@ -7,14 +7,12 @@ public class AgedBrieInventory extends Inventory {
 
     @Override
     public void updateStatus() {
-        if (quality < 50) {
-            quality = quality + 1;
-        }
+        increaseQuality();
 
         sellIn = sellIn - 1;
 
-        if (sellIn < 0 && quality < 50) {
-            quality = quality + 1;
+        if (sellIn < 0) {
+            increaseQuality();
         }
     }
 }

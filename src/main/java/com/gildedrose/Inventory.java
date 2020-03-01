@@ -18,14 +18,20 @@ public class Inventory {
     }
     
     public void updateStatus() {
-        if (quality > 0) {
-            quality = quality - 1;
-        }
+        decreaseQuality();
 
         sellIn = sellIn - 1;
 
-        if (sellIn < 0 && quality > 0) {
-            quality = quality - 1;
+        if (sellIn < 0) {
+            decreaseQuality();
         }
+    }
+
+    void decreaseQuality() {
+        quality = quality > 0 ? quality - 1 : quality;
+    }
+
+    void increaseQuality() {
+        quality = quality < 50 ? quality + 1 : quality;
     }
 }
