@@ -69,58 +69,58 @@ public class InventoryTest {
 
     @Test
     public void test_should_return_sellIn_0_and_quality_4_given_name_Aged_Brie_and_sellIn_1_and_quality_3() {
-        Inventory inventory = new Inventory("Aged Brie", 1, 3);
+        Inventory inventory = new AgedBrieInventory(1, 3);
 
         inventory.updateStatus();
 
-        assertEquals(new Inventory("Aged Brie", 0, 4), inventory);
+        assertEquals(new AgedBrieInventory(0, 4), inventory);
     }
 
     @Test
     public void test_should_return_sellIn_0_and_quality_50_given_name_Aged_Brie_and_sellIn_1_and_quality_50() {
-        Inventory inventory = new Inventory("Aged Brie", 1, 50);
+        Inventory inventory = new AgedBrieInventory(1, 50);
 
         inventory.updateStatus();
 
-        assertEquals(new Inventory("Aged Brie", 0, 50), inventory);
+        assertEquals(new AgedBrieInventory(0, 50), inventory);
     }
 
     @Test
     public void test_should_return_sellIn_negative_1_and_quality_7_given_name_Aged_Brie_and_sellIn_0_and_quality_5() {
-        Inventory inventory = new Inventory("Aged Brie", 0, 5);
+        Inventory inventory = new AgedBrieInventory(0, 5);
 
         inventory.updateStatus();
 
-        assertEquals(new Inventory("Aged Brie", -1, 7), inventory);
+        assertEquals(new AgedBrieInventory(-1, 7), inventory);
     }
 
     @Test
     public void test_should_return_sellIn_negative_1_and_quality_50_given_name_Aged_Brie_and_sellIn_0_and_quality_49() {
-        Inventory inventory = new Inventory("Aged Brie", 0, 49);
+        Inventory inventory = new AgedBrieInventory(0, 49);
 
         inventory.updateStatus();
 
-        assertEquals(new Inventory("Aged Brie", -1, 50), inventory);
+        assertEquals(new AgedBrieInventory(-1, 50), inventory);
     }
 
     @ParameterizedTest
     @ValueSource(ints = {-1, 0, 1})
     public void test_should_return_quality_51_given_name_Aged_Brie_and_any_sellIn_and_quality_51(int sellIn) {
-        Inventory inventory = new Inventory("Aged Brie", sellIn, 51);
+        Inventory inventory = new AgedBrieInventory(sellIn, 51);
 
         inventory.updateStatus();
 
-        assertEquals(new Inventory("Aged Brie", sellIn - 1, 51), inventory);
+        assertEquals(new AgedBrieInventory(sellIn - 1, 51), inventory);
     }
 
     @ParameterizedTest
     @MethodSource("argumentsGenerator")
     public void test_should_return_same_sellIn_and_quality_given_name_Sulfuras(int sellIn, int quality) {
-        Inventory inventory = new Inventory("Sulfuras, Hand of Ragnaros", sellIn, quality);
+        Inventory inventory = new SulfurasInventory(sellIn, quality);
 
         inventory.updateStatus();
 
-        assertEquals(new Inventory("Sulfuras, Hand of Ragnaros", sellIn, quality), inventory);
+        assertEquals(new SulfurasInventory(sellIn, quality), inventory);
     }
 
     static Stream<Arguments> argumentsGenerator(){
@@ -129,38 +129,38 @@ public class InventoryTest {
 
     @Test
     public void test_should_return_sellIn_0_and_quality_8_given_name_Backstage_and_sellIn_1_and_quality_5() {
-        Inventory inventory = new Inventory("Backstage passes to a TAFKAL80ETC concert", 1, 5);
+        Inventory inventory = new BackstageInventory(1, 5);
 
         inventory.updateStatus();
 
-        assertEquals(new Inventory("Backstage passes to a TAFKAL80ETC concert", 0, 8), inventory);
+        assertEquals(new BackstageInventory(0, 8), inventory);
     }
 
     @Test
     public void test_should_return_sellIn_0_and_quality_50_given_name_Backstage_and_sellIn_1_and_quality_48() {
-        Inventory inventory = new Inventory("Backstage passes to a TAFKAL80ETC concert", 1, 48);
+        Inventory inventory = new BackstageInventory(1, 48);
 
         inventory.updateStatus();
 
-        assertEquals(new Inventory("Backstage passes to a TAFKAL80ETC concert", 0, 50), inventory);
+        assertEquals(new BackstageInventory(0, 50), inventory);
     }
 
     @Test
     public void test_should_return_sellIn_0_and_quality_51_given_name_Backstage_and_sellIn_1_and_quality_51() {
-        Inventory inventory = new Inventory("Backstage passes to a TAFKAL80ETC concert", 1, 51);
+        Inventory inventory = new BackstageInventory(1, 51);
 
         inventory.updateStatus();
 
-        assertEquals(new Inventory("Backstage passes to a TAFKAL80ETC concert", 0, 51), inventory);
+        assertEquals(new BackstageInventory(0, 51), inventory);
     }
 
     @ParameterizedTest
     @ValueSource(ints = {0, 1, 48, 50, 51})
     public void test_should_return_quality_0_given_name_Backstage_and_sellIn_0(int quality) {
-        Inventory inventory = new Inventory("Backstage passes to a TAFKAL80ETC concert", 0, quality);
+        Inventory inventory = new BackstageInventory(0, quality);
 
         inventory.updateStatus();
 
-        assertEquals(new Inventory("Backstage passes to a TAFKAL80ETC concert", -1, 0), inventory);
+        assertEquals(new BackstageInventory(-1, 0), inventory);
     }
 }

@@ -10,7 +10,7 @@ public class GildedRoseTest {
     void should_update_all_inventories_status() {
         Inventory[] inventories = new Inventory[] {
                 new Inventory("foo", 1, 3),
-                new Inventory("Aged Brie", 1, 3)
+                new AgedBrieInventory(1, 3)
         };
         GildedRose gildedRose = new GildedRose(inventories);
         gildedRose.updateStatus();
