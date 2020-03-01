@@ -1,7 +1,13 @@
 package com.gildedrose;
 
+import java.util.Arrays;
+
 class GildedRose {
-    Inventory[] inventories;
+    private Inventory[] inventories;
+
+    public Inventory[] getInventories() {
+        return Arrays.copyOf(inventories, inventories.length);
+    }
 
     public GildedRose(Inventory[] inventories) {
         this.inventories = inventories;

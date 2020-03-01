@@ -1,18 +1,22 @@
 package com.gildedrose;
 
 import lombok.AllArgsConstructor;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
 
 @AllArgsConstructor
+@Getter
+@EqualsAndHashCode
 public class Inventory {
     public static final String AGED_BRIE = "Aged Brie";
     public static final String BACKSTAGE = "Backstage passes to a TAFKAL80ETC concert";
     public static final String SULFURAS = "Sulfuras, Hand of Ragnaros";
 
-    public String name;
+    private String name;
 
-    public int sellIn;
+    private int sellIn;
 
-    public int quality;
+    private int quality;
 
     @Override
     public String toString() {
