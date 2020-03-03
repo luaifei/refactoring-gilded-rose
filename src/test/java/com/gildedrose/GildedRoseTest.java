@@ -1,21 +1,20 @@
 package com.gildedrose;
 
-import org.junit.jupiter.api.Test;
+import static org.hamcrest.core.Is.is;
+import static org.junit.Assert.*;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import org.junit.Test;
 
 public class GildedRoseTest {
 
     @Test
-    void should_update_all_inventories_status() {
-        Inventory[] inventories = new Inventory[] {
-                new Inventory("foo", 1, 3),
-                new AgedBrieInventory(1, 3)
-        };
-        GildedRose gildedRose = new GildedRose(inventories);
-        gildedRose.updateStatus();
-
-        assertEquals(new Inventory("foo", 0, 2), gildedRose.getInventories()[0]);
-        assertEquals(new Inventory("Aged Brie", 0, 4), gildedRose.getInventories()[1]);
+    public void foo() {
+        Item[] items = new Item[] { new Item("foo", 1, 5) };
+        GildedRose app = new GildedRose(items);
+        app.update_quality();
+        assertEquals("foo", app.items[0].name);
+        assertThat(app.items[0].quality, is(4));
+        assertThat(app.items[0].sell_in, is(0));
     }
+
 }
